@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychology Project - Frame 1</title>
+	<style>
+		body {
+			background-color: #F5F5F5;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			margin: 0 auto;
+			width: 600px;
+			padding-top: 50px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 30px;
+		}
+
+		img {
+			max-width: 100%;
+			margin-bottom: 30px;
+		}
+
+		form {
+			margin-bottom: 30px;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Psychology Project - Frame 1</h1>
+		<img src="folder/image.png" alt="Psychology Project Image">
+		<form action="folder/frame2.html" method="post">
+			<label for="question1">Question 1:</label>
+			<input type="text" id="question1" name="question1" required>
+			<label for="question2">Question 2:</label>
+			<input type="text" id="question2" name="question2" required>
+			<label for="question3">Question 3:</label>
+			<input type="text" id="question3" name="question3" required>
+			<label for="question4">Question 4:</label>
+			<input type="text" id="question4" name="question4" required>
+			<input type="submit" value="Next" onclick="storeData()">
+		</form>
+	</div>
+	<script>
+		function storeData() {
+			var feature1 = document.getElementById("question1").value;
+			var feature2 = document.getElementById("question2").value;
+			var feature3 = document.getElementById("question3").value;
+			var feature4 = document.getElementById("question4").value;
+
+			localStorage.setItem("question1", feature1);
+			localStorage.setItem("question2", feature2);
+			localStorage.setItem("question3", feature3);
+			localStorage.setItem("question4", feature4);
+
+			document.getElementById("myForm").submit();
+		}
+	</script>
+</body>
+</html>

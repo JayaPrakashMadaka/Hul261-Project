@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychology Project - Frame 3</title>
+	<style>
+		body {
+			background-color: #F5F5F5;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			margin: 0 auto;
+			width: 600px;
+			padding-top: 50px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 30px;
+		}
+
+		img {
+			max-width: 100%;
+			margin-bottom: 30px;
+		}
+
+		form {
+			margin-bottom: 30px;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/FileSaver.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Psychology Project - Frame 3</h1>
+		<img src="image.png" alt="Psychology Project Image">
+		<form method="post" action="frame4.html">
+			<label for="question5">Question 5:</label>
+			<input type="text" id="question5" name="question5" required>
+			<label for="question6">Question 6:</label>
+			<input type="text" id="question6" name="question6" required>
+			<label for="question7">Question 7:</label>
+			<input type="text" id="question7" name="question7" required>
+			<label for="question8">Question 8:</label>
+			<input type="text" id="question8" name="question8" required>
+
+			<input type="submit" value="Submit" onclick="exportToExcel()">
+		</form>
+	</div>
+
+	<script>
+		function exportToExcel() {
+			// Retrieve data from Frame 1 and Frame 3
+			var feature1 = localStorage.getItem("question1");
+			var feature2 = localStorage.getItem("question2");
+			var feature3 = localStorage.getItem("question3");
+			var feature4 = localStorage.getItem("question4");
+			var feature5 = document.getElementById("question5").value;
+			var feature6 = document.getElementById("question6").value;
+			var feature7 = document.getElementById("question7").value;
+			var feature8 = document.getElementById("question8").value;
+
+			// Create an array with all features
+			var features = [feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8];
+
+			// Create a new Excel workbook and sheet
+			var wb = XLSX.utils.book_new();
+			var ws = XLSX.utils.aoa_to_sheet([features]);
+
+			// Add the sheet to the workbook
+			XLSX.utils.book_append_sheet(wb, ws, "Answers");
+
+			// Save the workbook as a file
+			XLSX.writeFile(wb, "psychology_project_answers.xlsx");
+		}
+	</script>
+<body>
+</html>
